@@ -18,14 +18,15 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
         $author = $_POST['author'];
         $title = $_POST['title'];
         $content = $_POST['content'];
+        $owner = $_POST['owner'];
 
         // Add task to DB
-        $sql = "INSERT INTO posts(author, title, content) VALUES (?,?,?)";
+        $sql = "INSERT INTO posts(author, title, content,owner) VALUES (?,?,?,?)";
 
         $stmt = $db->prepare($sql);
 
         try {
-            $stmt->execute([$author, $title, $content]);
+            $stmt->execute([$author, $title, $content,$owner]);
             echo json_encode(['status' => 'success', 'message' => 'Post added successfully']);
         } catch (Exception $e) {
             echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
@@ -37,14 +38,14 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
         $author = $_POST['author'];
         $title = $_POST['title'];
         $content = $_POST['content'];
-
+        $owner = $_POST['owner'];
         // Add task to DB
-        $sql = "INSERT INTO posts(author, title, content) VALUES (?,?,?)";
+        $sql = "INSERT INTO posts(author, title, content,owner) VALUES (?,?,?,?)";
 
         $stmt = $db->prepare($sql);
 
         try {
-            $stmt->execute([$author, $title, $content]);
+            $stmt->execute([$author, $title, $content,$owner]);
             header('Location:../posts.php?posted');
             exit();
         } catch (Exception $e) {

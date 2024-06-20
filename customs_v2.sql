@@ -1,0 +1,219 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 20, 2024 at 10:31 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `customs`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `is_system` int(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`, `date`, `is_system`) VALUES
+(4, 'admin@example.com', '$2y$12$HP9yMU7ND.83aak5UmmDM.xXm24RuxXcq8cEfhPgCS5C2yoA8jM0q', '2018-08-07 01:23:11', 1),
+(5, 'test@gmail.com', '$2y$12$SM7h8LhBtLqfvkcPB5ogGe8H0wqqiOLTUmwlVKYRjYanZ76BVnHEK', '2024-06-20 14:59:10', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `comment` varchar(200) NOT NULL,
+  `blogid` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `name`, `comment`, `blogid`, `date`) VALUES
+(1, 'Jaden', 'Awesome post guys!!', 6, '2018-07-28 00:15:59'),
+(6, 'Cliff', 'I really relate to this', 5, '2018-07-28 01:00:14'),
+(8, 'Ethredah', 'nice', 7, '2018-07-29 21:10:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `names` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `names`, `email`, `message`, `date`) VALUES
+(1, 'Ethredah', 'ethredah@gmail.com', 'Hello there Ushauri team.', '2018-07-27 16:57:59'),
+(2, 'Chao', 'chao@gmail.com', 'Hi there!!', '2018-07-27 16:57:59'),
+(4, 'James Mlamba', 'jaymo@gmail.com', 'I am interested in a meeting.', '2018-07-28 01:38:22'),
+(5, 'James Mlamba', 'ethredah@gmail.com', 'hi', '2018-07-31 19:45:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `author` varchar(200) NOT NULL,
+  `title` varchar(400) NOT NULL,
+  `content` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) NOT NULL DEFAULT 'MOI',
+  `deleted` int(4) NOT NULL DEFAULT 0,
+  `owner` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `author`, `title`, `content`, `date`, `status`, `deleted`, `owner`) VALUES
+(5, 'Ethredah', 'MENTAL HEALTH IS REAL', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,csem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,\r\n\r\n', '2018-07-27 15:28:31', 'MOI', 0, '4'),
+(6, 'Derick', 'Ushauri Lending a hand', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,\r\n\r\n', '2018-07-27 15:50:04', 'MOI', 0, '4'),
+(7, 'fsddsa', 'dsa', '?âs ', '2024-05-27 15:05:47', 'MOI', 0, '4'),
+(8, 'dsa', '?', '- M?t là\r\n- 2 là', '2024-06-20 14:17:54', 'MOI', 0, '0'),
+(9, 'dsa', '?', '- M?t là\r\n- 2 là', '2024-06-20 14:17:58', 'MOI', 0, '0'),
+(10, 'dsa', '?', '- M?t là\r\n- 2 là', '2024-06-20 14:18:29', 'MOI', 0, '0'),
+(11, 'dadsa ', '?', 'k', '2024-06-20 14:49:49', 'MOI', 0, '0'),
+(12, 'Võ công bách', 'dsada', ' dsadsa', '2024-06-20 14:56:37', 'MOI', 0, '0'),
+(13, 'Võ công bách', 'ma1', ' adsa\r\ndsa\r\ndsa', '2024-06-20 15:12:36', 'MOI', 0, 'admin@example.com'),
+(14, 'bách ', 'mã 1', ' - làm cái này\r\n- làm cái kia', '2024-06-20 15:24:43', 'MOI', 0, 'admin@example.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribers`
+--
+
+CREATE TABLE `subscribers` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `email`, `date`) VALUES
+(3, 'ethredah@gmail.com', '2018-07-27 18:21:30'),
+(4, 'james@hack3.io', '2018-07-27 18:21:30'),
+(6, 'admin@pikash.sales', '2018-07-28 01:49:21');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blogid` (`blogid`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscribers`
+--
+ALTER TABLE `subscribers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `subscribers`
+--
+ALTER TABLE `subscribers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

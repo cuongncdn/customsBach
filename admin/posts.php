@@ -22,10 +22,75 @@
 
     $email = $_SESSION['email'];
 
-    $sql = "SELECT * FROM posts WHERE status='MOI' AND deleted=0";
+    $sql = "SELECT * FROM posts WHERE status='MOI' AND deleted=0 AND owner='$email'";
     $query = mysqli_query($connection, $sql);
 ?>
-<?php include 'layout/header.php';?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/icon.png">
+    <title>Cục Hải Quan Đà Nẵng</title>
+    <!-- Bootstrap Core CSS -->
+   <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
+    <link href="../plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+                <div class="top-left-part"><a class="logo" href="index.php"><b><img src="../plugins/images/icon.png" style="width: 30px; height: 30px;" alt="home" /></b><span class="hidden-xs"><b>Company</b></span></a></div>
+                <ul class="nav navbar-top-links navbar-left hidden-xs">
+                    <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+                    <li>
+                        <form role="search" class="app-search hidden-xs">
+                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    
+                    <!-- /.dropdown -->
+                    
+                  
+                   
+                    <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+                    <!-- /.dropdown -->
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- Left navbar-header -->
+        <?php include 'layout/sidebar-left.php';?>
+        <!-- Left navbar-header end -->
 
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -85,7 +150,7 @@
 
                                     if (mysqli_num_rows($query)==0) {
                                             
-                                                    echo "<i style='color:brown;'>No Administrators Here :( </i> ";
+                                                    echo "<i style='color:brown;'>Chưa có hồ sơ chờ xử lý </i> ";
                                                 }
                                                 else{
 
@@ -118,23 +183,28 @@
 
                                         <tr>
                                             <td>'.$stt++.'</td>
-                                            <td>'.$row["author"].'</td>
                                             <td>'.$row["title"].'</td>
-                                            <td><a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal'.$row["id"].'" title="remove" style="color:red;"></i></a></td>
-                                       
-
+                                            <td>'.$row["author"].'</td>
+                                            
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye"  data-toggle="modal" data-target="#responsive-modal'.$row["id"].'view" title="Xem" style="color:blue;"></i></a>
+                                                <a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal'.$row["id"].'delete" title="Xóa" style="color:red;"></i></a>
+                                                <a href="#"><i class="fa fa-check"  data-toggle="modal" data-target="#responsive-modal'.$row["id"].'check" title="Hoàn thành" style="color:green;"></i></a>
+                                            </td>
+                                    
                                             <!-- /.modal -->
-                                            <div id="responsive-modal'.$row["id"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div id="responsive-modal'.$row["id"].'check" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title">Bạn có muốn chắc chắn xóa Hồ sơ "'.$row["title"].'" này?</h4></div>
+                                                            <h4 class="modal-title">Bạn có muốn chắc chắn Hồ sơ "'.$row["title"].'" đã được xử lý?</h4>
+                                                        </div>
                                                         <div class="modal-footer">
                                                         <form action="functions/del_post.php" method="post">
                                                         <input type="hidden" name="id" value="'.$row["id"].'"/>
-                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
+                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Đóng</button>
+                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Đồng ý</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -142,6 +212,45 @@
                                             </div> 
                                             <!-- End Modal -->
 
+                                            <!-- /.modal -->
+                                            <div id="responsive-modal'.$row["id"].'delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h4 class="modal-title">Bạn có muốn chắc chắn xóa Hồ sơ "'.$row["title"].'" này?</h4>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <form action="functions/del_post.php" method="post">
+                                                        <input type="hidden" name="id" value="'.$row["id"].'"/>
+                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Đóng</button>
+                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Xóa</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <!-- End Modal -->
+
+                                            <!-- /.modal -->
+                                            <div id="responsive-modal'.$row["id"].'view" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <div>'.nl2br(htmlspecialchars($row["content"])).'</div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <form action="update_post.php?id='.$row["id"].'" method="post">
+                                                        <input type="hidden" name="id" value="'.$row["id"].'"/>
+                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Đóng</button>
+                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Cập nhật</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <!-- End Modal -->
                                          </tr>
                                     ';
 
@@ -213,4 +322,81 @@
             <footer class="footer text-center"> 2024 &copy; Cục Hải Quan Đà Nẵng</footer>
         </div>
         <!-- /#page-wrapper -->
-         <?php include 'layout/footer.php';?>
+        </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/tether.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="../plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- end - This is for export functionality only -->
+    <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+    <!--Style Switcher -->
+    <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+</html>

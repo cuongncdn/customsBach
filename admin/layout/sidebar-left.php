@@ -24,8 +24,8 @@
                     
                    <li> <a href="#" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Blog<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="posts.php">All Posts</a></li>
-                            <li><a href="new-post.php">Create Post</a></li>
+                            <li><a href="posts.php">Danh sách Hồ sơ</a></li>
+                            <li><a href="new-post.php">Tạo Hồ sơ</a></li>
                             <li><a href="comments.php" class="waves-effect">Comments</a>
                             </li>
                         </ul>

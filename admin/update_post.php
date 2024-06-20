@@ -16,6 +16,22 @@
 
       exit;
     }
+    if(!isset($_GET['id'])){
+        echo 'Not Found 404!';
+        exit;
+    }else{
+        $sql = 'SELECT * FROM posts WHERE id='.$_GET['id'];
+
+        $query = mysqli_query($connection, $sql);
+        $post = mysqli_fetch_array($query);
+        if(isset($post)){
+          
+        }else{
+            echo 'Not Found 404!';
+            exit;
+        }
+        
+    }
 
     $email = $_SESSION['email'];
     
@@ -98,7 +114,7 @@
                         <ol class="breadcrumb">
                             <li><a href="#">Tranh chính</a></li>
                             <li><a href="#">Hồ sơ</a></li>
-                            <li class="active">Tạo hồ sơ</li>
+                            <li class="active"><?php echo $post['title']?></li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -107,8 +123,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Tạo hồ sơ</h3>
-                            <p class="text-muted m-b-30 font-13"> Tạo hồ sơ với 3 bước Cán bộ thực hiện -> Mã hồ sơ -> Nội dung hồ sơ.</p>
+                            <h3 class="box-title m-b-0">Cập nhật: <?php echo $post['title']?></h3>
+                            <p class="text-muted m-b-30 font-13"> Cập nhật hồ sơ với 3 bước Cán bộ thực hiện -> Mã hồ sơ -> Nội dung hồ sơ.</p>
                             <div id="exampleValidator" class="wizard">
                                 <ul class="wizard-steps" role="tablist">
                                     <li class="active" role="tab">
@@ -124,14 +140,14 @@
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">Cán bộ thực hiện  (<i>Nhập tên Người thực hiện hồ sơ.</i>)</label>
                                                 <div class="col-xs-5">
-                                                    <input type="text" class="form-control" name="author"/> </div>
+                                                    <input type="text" value="<?php echo $post['author']?>" class="form-control" name="author"/> </div>
                                             </div>
                                         </div>
                                         <div class="wizard-pane" role="tabpanel">
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">Mã hồ sơ</label>
                                                 <div class="col-xs-5">
-                                                    <input type="text" class="form-control" name="title" required/> </div>
+                                                    <input type="text" value="<?php echo $post['title']?>" class="form-control" name="title" required/> </div>
                                             </div>
                                         </div>
                                         
@@ -139,7 +155,7 @@
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">Nội dung hồ sơ</label>
                                                 <div class="col-xs-5">
-                                                    <textarea id="myTextarea" class="form-control" name="content" required > </textarea>
+                                                    <textarea id="myTextarea" class="form-control" name="content" required ><?php echo $post['content']?></textarea>
                                                 </div>
                                             </div>
                                         </div>
