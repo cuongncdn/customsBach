@@ -1,11 +1,12 @@
 <?php
 require_once "db.php"; // File chứa kết nối đến cơ sở dữ liệu
 
-if (isset($_POST["id"])) {
+if (isset($_POST["id"], $_POST["status"])) {
     $id = $_POST["id"];
+    $status = $_POST["status"];
 
     // Câu SQL với tham số hóa
-    $sql = "UPDATE posts SET deleted = 1 WHERE id = ?";
+    $sql = "UPDATE posts SET status=? WHERE id=?";
 
     // Chuẩn bị câu lệnh SQL
     $stmt = $db->prepare($sql);
@@ -16,16 +17,16 @@ if (isset($_POST["id"])) {
 
     try {
         // Bind tham số và gán giá trị
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("si", $status, $id);
 
         // Thực thi câu lệnh SQL
         if ($stmt->execute()) {
             // Chuyển hướng sau khi cập nhật thành công
-            header('Location: ../posts.php?deleted');
+            header('Location: ../posts.php?status');
             exit;
         } else {
             // Xử lý lỗi khi thực thi câu lệnh SQL
-            echo "Lỗi khi cập nhật.";
+            echo "Lỗi khi cập nhật: " . $stmt->error;
         }
     } catch (Exception $e) {
         // Xử lý các ngoại lệ (trường hợp lỗi)
@@ -39,4 +40,4 @@ if (isset($_POST["id"])) {
     header('Location: ../posts.php?del_error');
     exit;
 }
-
+?>

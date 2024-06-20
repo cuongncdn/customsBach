@@ -38,4 +38,4 @@ if (isset($_SESSION['email'])){
 	echo "string";
 // When the user visits the page first time, simple login form will be displayed.
 
-
+}
