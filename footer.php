@@ -2,11 +2,11 @@
 
 <div class="footer">
 		<div class="col-md-4 footer-left-agileits">
-			<h3>Address</h3>
+			<h3>Địa chỉ</h3>
 				<ul>
-					<li><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Woodvale Grove, Westlands - Nairobi, Kenya</li>
-					<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@Companyonline.net">info@example.com</a></li>
-					<!-- <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> +(254) 754 235 535</li> -->
+					<li><span class="glyphicon glyphicon-home" aria-hidden="true"></span>65 -67 Xô Viết Nghệ Tĩnh, Quận Hải Châu, Thành Phố Đà Nẵng</li>
+					<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+84 (236) 3 827 639</li>
+					<li><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>+84 (236) 3 827 639</li>
 				</ul>
 		</div>
 		<div class="col-md-4 footer-left-agileinfo">
@@ -19,20 +19,33 @@
 					<li><a href="#" class="icon icon-border pinterest"></a></li>
 				</ul>
 		</div>
+		<style>
+			.footer-left-w3-agileits input[type="text"] {
+				outline: none;
+				padding: 10px 10px;
+				font-size: 14px;
+				color: #999;
+				width: 82%;
+				background: #fff;
+				border: none;
+				float: left;
+			}
+		</style>
 		<div class="col-md-4 footer-left-w3-agileits">
-			<h3>Newsletter</h3>
-			<p>Subscribe to our newsletter and be the first to know what we are upto.</p>
+			<h3>Tra cứu</h3>
+			<p>Vui lòng nhập mã hồ sơ cần tra cứu</p>
 				<form action="functions/subscribe.php" method="post">
-					<input type="email" name="email" placeholder="Your email..." required="">
+					<input type="text" name="mahoso" placeholder="Mã hồ sơ..." required="">
 					<input type="submit" value=" " name="submit">
 				</form>
 		</div>
+
 		<div class="clearfix"></div>
 	</div>
 <!-- //footer --> 
 	<div class="copyright-w3-agile">
 		<div class="container">
-			<p>© 2018 company | All rights reserved.</p>
+			<p>© 2024 customs | All rights reserved.</p>
 			<div class="clearfix"> </div>
 		</div>
 	</div>

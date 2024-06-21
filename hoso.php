@@ -1,19 +1,27 @@
-<!--
-author: Ethredah
-author URL: http://ethredah.github.io
--->
-
-
 
 <?php
+require_once "admin/functions/db.php";
 
-  require_once "Company_admin/functions/db.php";
+// Biến để lưu kết quả tra cứu
+$search_result = null;
 
-    $sql = 'SELECT * FROM posts';
+// Kiểm tra nếu người dùng đã gửi yêu cầu tra cứu
+if (isset($_POST['search'])) {
+    $search_term = $_POST['search_term'];
 
-    $query = mysqli_query($connection, $sql);
+    // Tìm kiếm hồ sơ theo mã đã nhập
+    $sql = "SELECT * FROM posts WHERE id = ?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $search_term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $search_result = $result->fetch_assoc();
+    } else {
+        $search_result = false;
+    }
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,14 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- banner -->
 	<div class="banner1">
 		<div class="container">
-			<div class="w3_agile_banner_top">
-				<div class="agile_phone_mail">
-					<ul>
-						<li><i class="fa fa-phone" aria-hidden="true"></i>+(254) 002 100 500</li>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@Companyonline.net">info@example.com</a></li>
-					</ul>
-				</div>
-			</div>
+		<?php include "head_bar.php"?>
 			<div class="agileits_w3layouts_banner_nav">
 				<nav class="navbar navbar-default">
 					<div class="navbar-header navbar-left">
@@ -63,72 +64,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h1><a class="navbar-brand" href="index.php"><img src="images/logo.png" class="img-responsive"></a></h1>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-						<nav class="cl-effect-13" id="cl-effect-13">
-						<ul class="nav navbar-nav">
-							<li><a href="index.php">Home</a></li>
-							<li><a href="about.php">About</a></li>
-							<li><a href="portfolio.php">Products</a></li>
-							<li class="active"><a href="blog.php">Blog</a></li>
-							<li><a href="contact.php">Contact</a></li>
-						</ul>
-						
-					</nav>
-
-					</div>
+					<?php include "menu.php"?>
 				</nav>
 			</div>
 		</div>
 	</div>
 <!-- //banner -->
-<!-- gallery -->
 	<div class="gallery">
 		<div class="container">
-			<h2 class="w3l_head w3l_head1">Blog</h2>
+			<h2 class="w3l_head w3l_head1">Tra cứu hồ sơ</h2>
 			<div class="wthree_gallery_grids">
 				
-				<div class="row">
+			<div class="row">
+				<!-- Form tra cứu hồ sơ -->
+				<form id="searchForm">
+					<div class="form-group">
+						<label for="search_term">Nhập mã hồ sơ:</label>
+						<input type="text" class="form-control" id="search_term" name="search_term" required>
+					</div>
+					<button type="submit" class="btn btn-primary">Tra cứu</button>
+				</form>
+			</div>
 
-						<?php 
-                            if (mysqli_num_rows($query)==0) {
-                              echo "<b style='color:brown;'>Sorry there are no posts Yet :( We will be uploading new content soon! </b> ";
-                              }
-                            
-                          
-                          else
-                          {
-
-                          	while ($row=mysqli_fetch_array($query)) {
-                          	
-                    echo
-					'<div class="col-md-4">
-						<a href="single.php?id='.$row["id"].'"><h4>'.$row["title"].'</h4></a>
-						<br>
-						<p>
-							'.substr($row["content"], 0, 200).'...
-						</p>
-						<br>
-						<h6 style="color: orange;">'.$row["author"].' <b style="color: #000;">|</b> '.$row["date"].'</h6>
-						<hr>
-					</div>';
-								}
-							}
-						?>
-				
-
-				</div>
-
-				<div class="row">
-					<!-- <h5>Comments</h5> -->
-
-				</div>
-                
+			<div class="row" id="searchResult">
+				<!-- Kết quả tra cứu sẽ được hiển thị ở đây -->
 			</div>
 			<script src="js/jzBox.js"></script>
 		</div>
 	</div>
-<!-- //gallery -->
-<!-- footer -->
+	<script>
+	$(document).ready(function(){
+		$('#searchForm').on('submit', function(event){
+			event.preventDefault();
+			var searchTerm = $('#search_term').val();
+			$.ajax({
+				url: 'functions/tracuu_ajax.php',
+				type: 'POST',
+				data: {search_term: searchTerm},
+				dataType: 'json',
+				success: function(response){
+					if(response.status == 'success'){
+						var result = response.data;
+						$('#searchResult').html(`
+							<div class="result-box">
+								<h3>Kết quả tra cứu:</h3>
+								<p><strong>Mã hồ sơ:</strong> ${result.title}</p>
+								<p><strong>Tên cán bộ quản lý:</strong> ${result.author}</p>
+								<p><strong>Nội dung:</strong> ${result.content.replace(/\n/g, '<br>')}</p>
+							</div>
+						`);
+					} else {
+						$('#searchResult').html(`<p>${response.message}</p>`);
+					}
+				},
+				error: function(){
+					$('#searchResult').html('<p>Đã xảy ra lỗi trong quá trình tra cứu.</p>');
+				}
+			});
+		});
+	});
+	</script>
 	
 	<?php 
 		include("footer.php");

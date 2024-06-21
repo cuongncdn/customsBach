@@ -85,16 +85,16 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
 	margin-bottom:0;
 }
 .navbar-default .navbar-brand,.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #ecc800;
+    color: #faf206;
 }
 .navbar-default .navbar-nav > li > a:hover{
-    color: #ecc800;
+    color: #faf206;
 }
 .navbar-nav {
     float: right;
 }
 .agile_short_dropdown {
-    background: #ecc800;
+    background: #faf206;
     border: none;
     box-shadow: none;
     border-radius: 0;
@@ -129,6 +129,7 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;
+    text-shadow: 1px 1px black;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -145,7 +146,7 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
     margin: 0.2em 0 0;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: #ecc800;
+    color: #faf206;
     background-color:transparent;
 }
 .navbar-nav > li {
@@ -393,7 +394,7 @@ a.w3ls_banner_more:hover{
 i.fa.fa-arrow-circle-o-right {
     font-size: 24px;
     margin-top: 20px;
-    color: #ecc800;
+    color: #faf206;
 }
 /*-- /banner-bottom --*/
 /*-- effect-2 css --*/
@@ -480,7 +481,7 @@ i.fa.fa-arrow-circle-o-right {
 }
 .pro_left h5 {
     font-size: 20px;
-    color: #ecc800;
+    color: #faf206;
     border: 1px solid #ccc;
     border-top-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -563,7 +564,7 @@ p.dolor{
 }
 .about-grid-left h4 {
     font-size: 23px;
-    color:#ecc800;
+    color:#faf206;
 	transition:.5s all;
 	-o-transition:.5s all;
 	-webkit-transition:.5s all;
@@ -638,7 +639,7 @@ p.dolor{
    padding:2em;
 }
 .content-top2:hover {
-    background:#ecc800;
+    background:#faf206;
 	transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -706,7 +707,7 @@ p.dolor{
 .text-desc{
 	position: absolute; 
 	left: 0; top: 0;
-	 background-color: #ecc800;
+	 background-color: #faf206;
 	 height: 100%; 
 	 opacity: 0;
 	 width: 100%;
@@ -756,10 +757,10 @@ p.dolor{
     color: #fff;
     border: none;
     padding: 9px 0;
-    background: url(../images/right-1.png) no-repeat 27px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 27px 12px #faf206;
 }
 .footer-left-w3-agileits input[type="submit"]:hover {
-    background: url(../images/right-1.png) no-repeat 27px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 27px 12px #faf206;
 }
 .footer p {
     font-size: 14px;
@@ -910,7 +911,7 @@ ul.social-icons li {
    color:#fff;
 }
 .copyright-w3-agile p a{
-   color:#ecc800;
+   color:#faf206;
 }
 .copyright-w3-agile p a:hover{
    color:#fff;
@@ -989,7 +990,7 @@ ul.social-icons li {
 }
 h3.icon-subheading {
     font-size: 28px;
-    color: #ecc800 !important;
+    color: #faf206 !important;
     margin: 30px 0 15px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -1156,7 +1157,7 @@ li.list-group-item1 {
 }
 .grid_5 h3, .grid_5 h2, .grid_5 h1, .grid_5 h4, .grid_5 h5, h3.hdg, h3.bars {
     margin-bottom: 1em;
-    color: #ecc800;
+    color: #faf206;
     font-weight: 600;
     font-size: 30px;
     letter-spacing: 2px;
@@ -1398,11 +1399,11 @@ h2.typoh2{
     -ms-transition: 0.5s all;
 }
 .agileits_mail_grid_left input[type="submit"]:hover {
-    background: #ecc800;
+    background: #faf206;
 }
 .agileits_mail_grid_left h4 {
     font-size: 1.2em;
-    color: #ecc800;
+    color: #faf206;
     margin-bottom: 1em;
 }
 .agileits_mail_grids {
@@ -1411,7 +1412,7 @@ h2.typoh2{
 /*-- contact us --*/
 /*-- gallery --*/
 .wthree_gallery_grids{
-	margin:3em 0 0;
+	margin:3em 0 3em 0;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #F58703;
@@ -1660,7 +1661,7 @@ h2.typoh2{
 }
  .furniture h3 {
     font-size: 34px;
-    color: #ecc800;
+    color: #faf206;
     letter-spacing: 2px;
     text-align: center;
     font-weight: 600;
@@ -1707,7 +1708,7 @@ transition:0.5s all;
 /**about**/
 .numscroller {
     font-size: 32px;
-    color: #ecc800;
+    color: #faf206;
     font-weight: 600;
 }
 .statistics {
@@ -1755,7 +1756,7 @@ transition:0.5s all;
 }
 .team-grids h5 {
     font-size: 24px;
-    color: #ecc800;
+    color: #faf206;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -2008,18 +2009,18 @@ transition:0.5s all;
     font-size: 23px;
 }
 .footer-left-w3-agileits input[type="submit"] {
-    background: url(../images/right-1.png) no-repeat 18px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 18px 12px #faf206;
 }
 .footer-left-w3-agileits input[type="submit"]:hover {
-    background: url(../images/right-1.png) no-repeat 18px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 18px 12px #faf206;
 }
 }
 @media (max-width: 768px){
 .footer-left-w3-agileits input[type="submit"] {
-    background: url(../images/right-1.png) no-repeat 16px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 16px 12px #faf206;
 }
 .footer-left-w3-agileits input[type="submit"]:hover {
-    background: url(../images/right-1.png) no-repeat 16px 12px #ecc800;
+    background: url(../images/right-1.png) no-repeat 16px 12px #faf206;
 }
 .footer h3 {
     font-size: 21px;
@@ -2562,4 +2563,41 @@ ul.place li {
 .navbar-brand {
     font-size: 32px;
 }
+}
+
+.result-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result-box h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.result-box p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.result-box p strong {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .result-box {
+        padding: 15px;
+    }
+
+    .result-box h3 {
+        font-size: 1.2em;
+    }
+
+    .result-box p {
+        font-size: 0.9em;
+    }
 }

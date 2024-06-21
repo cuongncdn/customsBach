@@ -1,18 +1,13 @@
-<!--
-author: Ethredah
-author URL: http://ethredah.github.io
--->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <link rel="icon" href="images/icon.png">
-<title>Title</title>
+<title>CỤC HẢI QUAN ĐÀ NẴNG</title>
 <!-- custom-theme -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Coalition Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //custom-theme -->
@@ -32,14 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- banner -->
 	<div class="banner">
 		<div class="container">
-			<div class="w3_agile_banner_top">
-				<div class="agile_phone_mail">
-					<ul>
-						<li><i class="fa fa-phone" aria-hidden="true"></i>+(254) 002 100 500</li>
-						<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@Companyonline.net">info@example.com</a></li>
-					</ul>
-				</div>
-			</div>
+			<?php include "head_bar.php"?>
 			<div class="agileits_w3layouts_banner_nav">
 				<nav class="navbar navbar-default">
 					<div class="navbar-header navbar-left">
@@ -52,19 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h1><a class="navbar-brand" href="index.php"><img src="images/logo.png" class="img-responsive"></a></h1>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-						<nav class="cl-effect-13" id="cl-effect-13">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.php">Home</a></li>
-							<li><a href="about.php">About</a></li>
-							<li><a href="portfolio.php">Products</a></li>
-							<li><a href="blog.php">Blog</a></li>
-							<li><a href="contact.php">Contact</a></li>
-						</ul>
-						
-					</nav>
-
-					</div>
+					<?php include "menu.php"?>
 				</nav>
 			</div>
 			<div class="wthree_banner_info">
@@ -73,30 +49,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="flexslider">
 						<ul class="slides">
 							<li>
-								<h3>Lorem ipsum dolor ..?</h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+								<h2>CỤC HẢI QUAN ĐÀ NẴNG</h2>
+								<p></p>
 								
 							</li>
 							<li>
-								<h3>Our Mission.. </h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+								<h3>Chuyên nghiệp</h3>
+								<p></p>
 								
 							</li>
 							<li>
-								<h3>Lorem ipsum dolor </h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+								<h3>Minh bạch</h3>
+								<p></p>
+								
+							</li>
+							<li>
+								<h3>Hiệu quả</h3>
+								<p></p>
 							
 							</li>
-							<li>
-								<h3>Our Vision... </h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-								
-							</li>
-							<li>
-								<h3>Lorem ipsum dolor? </h3>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p> <i style="color: orange;">--find out more</i>
-								
-							</li>
+							
 						</ul>
 					</div>
 				</section>
@@ -119,28 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //banner -->
 
 <!-- content -->
-<div class="process all_pad agileits">
-	
-	<?php
-				if (isset($_GET["subscribed"])) {
-					echo 
-					'<div class="alert alert-success" >
-                          <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                         <strong>SUBSCRIBED!! </strong><p> Thank you for subscribing with us. We will keep you informed on what is happening with Company.</p>
-                    </div>'
-					;
-				}
-				elseif (isset($_GET["fail"])) {
-					echo 
-					'<div class="alert alert-danger" >
-                          <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                         <strong>Ooops!! </strong><p> Looks like you are already subscribed to our mailing list :) </p>
-                    </div>'
-					;
-				}
-			?>	
 
-</div>	
 <!-- //process -->
 
 
